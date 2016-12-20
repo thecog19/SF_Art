@@ -11,8 +11,12 @@ Made in: <%= @location.first["accession_id"] %>
 <br>
 <h4>Nearby Parking:</h4>
 <ul>
-  <% nearby_parking(@location.first["geometry"], 500).each do |parking| %>
-    <li><%= parking["primetype"] %>, <%= parking["address"] %>, <%= google_maps_link(parking["address"]) %></li>
+  <% unless nearby_parking(@location.first["geometry"], 500).empty? %>
+    <% nearby_parking(@location.first["geometry"], 500).each do |parking| %>
+      <li><%= parking["primetype"] %>, <%= parking["address"] %>, <%= google_maps_link(parking["address"]) %></li>
+    <% end %>
+  <% else %>
+    There is no nearby parking, check out public transit and other options
   <% end %>
 </ul> 
 
@@ -22,5 +26,9 @@ Made in: <%= @location.first["accession_id"] %>
   <% unless location == @location.first || location["title"] == nil %>
     <li><%= location["title"] %> || <%= link_to "Details", location_path(id = location["_id_"]) %> </li>
   <% end %>
+<% end %>
+
+<% if nearby_locations(@location.first["geometry"]).empty? %>
+  There are no other nearby art pieces. Sorry about that. 
 <% end %>
 </ul>

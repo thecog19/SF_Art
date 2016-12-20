@@ -1,0 +1,17 @@
+<h1> <%= @location.first["title"] %> </h1>
+<h3><%= @location.first["artist"] %></h3> 
+
+Located in: <%= @location.first["location_description"] %>
+<br> 
+<%= @location.first["credit_line"] %> 
+<br>
+In: <%= @location.first["accession_id"] %>
+<br>
+
+<%= @location.first["geometry"] %>
+Nearby Art: <%= nearby_locations("1").each do |location| %>
+  <%= location %>
+  <br>
+  <br>
+<% end %>
+ 

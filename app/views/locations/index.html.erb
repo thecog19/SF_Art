@@ -1,0 +1,9 @@
+<h1> Public art in SF </h1>
+
+<% @locations.each do |location|%>
+  <% unless location["title"] == "title" %>
+    <%= location["title"] %> || <%= location["location_description"] %> || <%= location["artist"] %> || <%= link_to "Details", location_path(id = location["_id_"]) %>
+    <br>
+  <% end %>
+
+<% end %>

@@ -7,9 +7,16 @@ Located in: <%= @location.first["location_description"] %>
 <br>
 Made in: <%= @location.first["accession_id"] %>
 <br>
-
+<%= google_maps_lat_long(@location.first["geometry"]) %>
 <br>
-Nearby Art: 
+<h4>Nearby Parking:</h4>
+<ul>
+  <% nearby_parking(@location.first["geometry"], 500).each do |parking| %>
+    <li><%= parking["primetype"] %>, <%= parking["address"] %>, <%= google_maps_link(parking["address"]) %></li>
+  <% end %>
+</ul> 
+
+<h4>Nearby Art:</h4> 
 <ul>
 <% nearby_locations(@location.first["geometry"]).each do |location| %>
   <% unless location == @location.first || location["title"] == nil %>

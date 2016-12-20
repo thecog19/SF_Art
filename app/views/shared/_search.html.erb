@@ -1,0 +1,17 @@
+<%= form_tag search_index_path, :method => 'get' do %>
+
+  <%= label_tag "query[title]", "Find by title"%>
+
+  <%= text_field_tag "query[title]", params[:query][:title]  %>
+
+  <%= label_tag "query[artist]", "Find by artist" %>
+
+  <%= text_field_tag "query[artist]", params[:query][:artist] %>
+
+  <%= label_tag "query[location_description]", "Find by location" %>
+
+  <%= text_field_tag "query[location_description]", params[:query][:location_description] %>
+
+  <%= submit_tag "Search" %>
+<% end %>
+<br>

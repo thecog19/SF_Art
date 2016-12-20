@@ -1,4 +1,7 @@
 <h1> Public art in SF </h1>
+
+<%= render "/shared/search" %>
+
 <ul>
 <% @locations.each do |location|%>
   <% unless location["title"] == "title" %>
@@ -6,4 +9,5 @@
   <% end %>
 
 <% end %>
+
 </ul>

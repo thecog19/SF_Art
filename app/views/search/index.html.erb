@@ -1,0 +1,21 @@
+<h1> Public art in SF </h1>
+
+<%= render "/shared/search" %>
+
+
+<% if @results.empty? %>
+  <p> Your search returned no results </p>
+
+<% end %>
+<ul>
+
+
+<% @results.each do |location|%>
+  <% unless location["title"] == "title" %>
+  <li> <%= location["title"] %> || <%= location["location_description"] %> || <%= location["artist"] %> || <%= link_to "Details", location_path(id = location["_id_"]) %> </li>
+<% end %>
+
+<% end %>
+
+
+</ul>

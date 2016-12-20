@@ -11,12 +11,13 @@ Made in: <%= @location.first["accession_id"] %>
 <br>
 <br>
 
-<% if current_user && unbookmarked %>
+<% if current_user && !current_user.bookmark_lists.empty?%>
   <%= form_for Bookmark.new do |f| %>
     <%= f.label :name, "Bookmark This Page" %>
     <%= f.text_field :name%>
     <%= f.collection_select :bookmark_list_id, current_user.bookmark_lists, :id, :name %>
     <%= f.hidden_field :bookmarkable_id, value: params[:id] %>
+     <%= f.hidden_field :coords, value: @location.first["geometry"] %>
     <%= f.submit %>
   <% end %>
 <% end %>

@@ -6,10 +6,14 @@
 
 <% @bookmark_lists.each do |list| %>
   <h4> <%= list.name %> </h4> 
+  <ul>
   <% list.bookmarks.each do |bookmark| %>
-    <%= link_to "#{bookmark.name}", location_path(bookmark.bookmarkable_id) %> <%= link_to "Delete",  bookmark_path(bookmark.id), method: :delete %>
+    <li><%= link_to "#{bookmark.name}", location_path(bookmark.bookmarkable_id) %> <%= link_to "Delete",  bookmark_path(bookmark.id), method: :delete %></li>
   <% end %>
+  </ul>
   <br>
+  <h4> Map Of Saved Sites </h4>
+  <img src="<%= static_map(list) %>"> 
   <br>
   <%= link_to "Delete List",  bookmark_list_path(list.id), method: :delete %>
 <% end %>

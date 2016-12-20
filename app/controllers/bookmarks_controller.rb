@@ -3,11 +3,9 @@ class BookmarksController < ApplicationController
 
   def create
     @list = current_user.bookmark_lists.find(params[:bookmark][:bookmark_list_id])
-    @bookmark = @list.bookmarks.build(bookmarkable_id: params[:bookmark][:bookmarkable_id])
+    @bookmark = @list.bookmarks.build(bookmark_params)
     @bookmark.user_id = current_user.id
-    @bookmark.name = params[:bookmark][:name]
     if @bookmark.save
-
       flash[:success] = "Created Bookmark"
     else
       flash[:danger] = "Bookmark could not be created!"
@@ -30,6 +28,6 @@ class BookmarksController < ApplicationController
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(bookmark: [:bookmarkable_id, :name, :bookmark_list_id])
+    params.require(:bookmark).permit(:bookmarkable_id, :name, :bookmark_list_id, :coords)
   end
 end

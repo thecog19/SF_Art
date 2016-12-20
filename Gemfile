@@ -6,7 +6,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'httparty'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-
+gem 'devise'
 gem 'figaro'
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use Puma as the app server

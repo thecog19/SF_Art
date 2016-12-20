@@ -9,6 +9,21 @@ Made in: <%= @location.first["accession_id"] %>
 <br>
 <%= google_maps_lat_long(@location.first["geometry"]) %>
 <br>
+<br>
+
+<% if current_user && unbookmarked %>
+  <%= form_for Bookmark.new do |f| %>
+    <%= f.label :name, "Bookmark This Page" %>
+    <%= f.text_field :name%>
+    <%= f.collection_select :bookmark_list_id, current_user.bookmark_lists, :id, :name %>
+    <%= f.hidden_field :bookmarkable_id, value: params[:id] %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
+
+
+
+
 <h4>Nearby Parking:</h4>
 <ul>
   <% unless nearby_parking(@location.first["geometry"], 500).empty? %>

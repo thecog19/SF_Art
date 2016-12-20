@@ -1,0 +1,2 @@
+class BookmarkList < ApplicationRecord
+end

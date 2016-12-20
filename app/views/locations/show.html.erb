@@ -5,13 +5,15 @@ Located in: <%= @location.first["location_description"] %>
 <br> 
 <%= @location.first["credit_line"] %> 
 <br>
-In: <%= @location.first["accession_id"] %>
+Made in: <%= @location.first["accession_id"] %>
 <br>
 
-<%= @location.first["geometry"] %>
-Nearby Art: <%= nearby_locations("1").each do |location| %>
-  <%= location %>
-  <br>
-  <br>
+<br>
+Nearby Art: 
+<ul>
+<% nearby_locations(@location.first["geometry"]).each do |location| %>
+  <% unless location == @location.first || location["title"] == nil %>
+    <li><%= location["title"] %> || <%= link_to "Details", location_path(id = location["_id_"]) %> </li>
+  <% end %>
 <% end %>
- 
+</ul>

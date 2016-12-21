@@ -25,3 +25,15 @@ Deployed Version: https://stark-bastion-46425.herokuapp.com
   <li>Seamless integration between database generated data and API generated data </li>
   <li>Fast performance despite API calls </li>
 </ul>
+
+<h4>Downloading and using locally</h4>
+To download and run this repo locally follow the following steps
+<ul> 
+  <li> Navigate to the desired folder, and in the command line type -git clone git@github.com:thecog19/SF_Art.git </li>
+  <li> Navigate in the SF_Art folder </li>
+  <li> Type rails db:create in console<li>
+  <li> Type rails db:migrate in console<li>
+  <li> Type rails s in console to start the local server<li>
+  <li> In your local browser navigate to localhost:3000<li>
+  <li> When you're finished, don't forget to close the local server by hitting ctrl-c in the session running the server </li>
+</ul>

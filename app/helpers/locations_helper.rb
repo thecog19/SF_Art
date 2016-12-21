@@ -14,7 +14,7 @@ module LocationsHelper
   def nearby_bike_parking(string, dist)
     area = process_coords(area)
     querry = "$where=within_circle(geom, #{area[1]}, #{area[0]}, #{dist})"
-    parking_grabber(querry)
+    bike_grabber(querry)
   end
 
   def google_maps_link(address)
